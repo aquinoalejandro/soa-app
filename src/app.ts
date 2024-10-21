@@ -1,3 +1,6 @@
+import Server from "./server";
 
 
-console.log("Hello group 6: SOA App");
+const sever = new Server();
+
+sever.listen();
