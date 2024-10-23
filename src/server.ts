@@ -3,7 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from 'helmet';
 import { connectionDB } from '../src/config/connectionDB';
-import { envs } from "./environments/environments";
+import { envs } from './environments/environments';
 
 
 
@@ -41,6 +41,7 @@ class Server {
     listen(): void {
         this.app.listen( this.port, ()=> {
             console.log(`Servidor corriendo en el puerto ${this.port}`);
+            console.log(envs)
         });
     }
 
