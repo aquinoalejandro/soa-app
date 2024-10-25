@@ -4,12 +4,13 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - postgres-soa:/var/lib/postgresql/data
+      # - postgres-soa:/var/lib/postgresql/data  aca se crea con el volumen
+      - ./database:/var/lib/postgresql/data   # aca se crea con la carpeta database en mi aplicacion
     environment:
       - POSTGRES_PASSWORD=123456
 
 
-volumes:
-  postgres-soa:
-    external: true
+# volumes:
+#   postgres-soa:
+#     external: true
       
