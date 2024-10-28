@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ReviewCard } from '../components/Card';
 import { ReviewForm } from '../components/Review';
-import { MessageSquare, Search } from 'lucide-react';
+import { MessageSquare, Search, Menu } from 'lucide-react';
 
 const initialReviews = [
   {
@@ -11,7 +11,7 @@ const initialReviews = [
     comment: "¡La mejor hamburguesa que he probado! La carne estaba perfectamente cocida y los ingredientes super frescos. El pan brioche era increíble.",
     rating: 5,
     clientName: "Ana García",
-    productName: "Hamburguesa Clásica",
+    productName: "Hamburguesa Clasica",
     date: "2024-03-15"
   },
   {
@@ -29,8 +29,8 @@ const initialReviews = [
     clientId: 3,
     productId: 103,
     comment: "Una opción vegetariana increíble. La hamburguesa de garbanzos tiene un sabor excepcional y la textura es perfecta.",
-    rating: 4.5,
-    clientName: "María López",
+    rating: 4,
+    clientName: "María Lopez",
     productName: "Hamburguesa Veggie",
     date: "2024-03-13"
   }
@@ -44,10 +44,11 @@ const burgerMenu = {
   105: "Hamburguesa Blue Cheese",
 };
 
-function App() {
+function Opinion() {
   const [reviews, setReviews] = useState(initialReviews);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('product');
+  const [showLogin, setShowLogin] = useState(false);
 
   const handleSubmitReview = (newReview) => {
     const review = {
@@ -75,6 +76,24 @@ function App() {
 
   return (
     <div className="min-h-screen bg-orange-50">
+      <nav className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex items-center">
+              <span className="ml-2 text-xl font-bold text-gray-900">BurgerCritic</span>
+            </div>
+            <div className="hidden sm:flex space-x-8">
+              <a href="/" className="text-gray-900 hover:text-orange-600 px-3 py-2 font-medium">Inicio</a>
+              <button
+                onClick={() => setShowLogin(true)}
+                className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
+              >
+                Iniciar Sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
       <div className="max-w-5xl mx-auto px-4 py-8">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -133,4 +152,4 @@ function App() {
   );
 }
 
-export default App;
+export default Opinion;
