@@ -30,4 +30,6 @@ ProductModel.init({
     }
 }, { sequelize: db, tableName: 'products' });
 
+
+
 export { ProductModel }
