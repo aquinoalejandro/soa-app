@@ -3,23 +3,25 @@ services:
     container_name: postgres-soa
     image: postgres:15.1
     ports:
-      - 5433:5432
+      - 5434:5432
     volumes:
       - ./databaseSOA:/var/lib/postgresql/data 
     environment:
       - POSTGRES_PASSWORD=123456
 
-  pgAdmin:
-    depends_on:
-      - db
-    image: dpage/pgadmin4:6.17
-    ports:
-      - 8080:80
-    volumes:
-      - ./pgAdmin:/var/lib/pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: gruposoa@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: 123456
+  
+  #! DIO PROBLEMAS SE DESCONECTAR EN EL DOCKER
+  # pgAdmin:
+  #   depends_on:
+  #     - db
+  #   image: dpage/pgadmin4:6.17
+  #   ports:
+  #     - 8081:80
+  #   volumes:
+  #     - ./pgAdmin:/var/lib/pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: gruposoa@gmail.com
+  #     PGADMIN_DEFAULT_PASSWORD: 123456
 
 # volumes:
 #   postgres-soa:
