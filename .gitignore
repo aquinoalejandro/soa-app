@@ -3,5 +3,5 @@
 node_modules
 .env
 
-postgres-soa
+databaseSOA
 pgAdmin
