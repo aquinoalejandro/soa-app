@@ -19,7 +19,7 @@ function App() {
                 onClick={() => setShowLogin(true)}
                 className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
               >
-                Iniciar Sesión
+                Iniciar Sesion
               </button>
             </div>
           </div>
@@ -38,7 +38,7 @@ function App() {
                     Descubre las Mejores Hamburguesas de la Ciudad
                   </h1>
                   <p className="text-xl text-gray-600 mb-8">
-                    Lee opiniones auténticas, comparte tus experiencias y encuentra tu próxima hamburguesa favorita.
+                    Lee opiniones auténticas, comparte tus experiencias y encuentra la próxima hamburguesa favorita de tu lista.
                   </p>
                   <button 
                     onClick={() => setShowLogin(true)}
@@ -73,7 +73,7 @@ function App() {
                   ¿Por qué BurgerCritic?
                 </h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
-                  La plataforma más confiable para descubrir y compartir experiencias sobre las mejores hamburguesas.
+                  La plataforma más confiable para descubrir y compartir experiencias sobre las mejores hamburguesas de la ciudad.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -83,7 +83,7 @@ function App() {
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">Reseñas Verificadas</h3>
                   <p className="text-gray-600">
-                    Todas nuestras reseñas son de clientes reales que han probado nuestras hamburguesas.
+                    Todas las reseñas son de clientes reales que han probado hamburguesas de todos los lugares.
                   </p>
                 </div>
                 <div className="text-center">

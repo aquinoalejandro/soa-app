@@ -8,31 +8,21 @@ const initialReviews = [
     id: 1,
     clientId: 1,
     productId: 101,
-    comment: "¡La mejor hamburguesa que he probado! La carne estaba perfectamente cocida y los ingredientes super frescos. El pan brioche era increíble.",
+    comment: "¡La mejor hamburguesa que he probado son de MalditaBurger! La carne estaba perfectamente cocida y los ingredientes super frescos. El pan brioche era increíble. El lomito y la pizza mortales, muy ricos.",
     rating: 5,
     clientName: "Ana García",
     productName: "Hamburguesa Clasica",
     date: "2024-03-15"
   },
   {
-    id: 2,
-    clientId: 2,
-    productId: 102,
-    comment: "La hamburguesa BBQ estaba buena, aunque la salsa podría ser un poco más espesa. El bacon estaba crujiente y delicioso.",
-    rating: 4,
-    clientName: "Carlos Rodríguez",
-    productName: "Hamburguesa BBQ Bacon",
-    date: "2024-03-14"
-  },
-  {
-    id: 3,
-    clientId: 3,
-    productId: 103,
-    comment: "Una opción vegetariana increíble. La hamburguesa de garbanzos tiene un sabor excepcional y la textura es perfecta.",
-    rating: 4,
-    clientName: "María Lopez",
-    productName: "Hamburguesa Veggie",
-    date: "2024-03-13"
+    id: 1,
+    clientId: 1,
+    productId: 101,
+    comment: "Il Viale!!!!!!!, horrible, viene sin papa, pedís alito y te traen lomito. Ademas, las papas que pedí aparte ni llegaron",
+    rating: 0,
+    clientName: "Fabian García",
+    productName: "Alito",
+    date: "2024-03-15"
   }
 ];
 
@@ -100,7 +90,7 @@ function Opinion() {
             Opiniones de Hamburguesas
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Descubre lo que nuestros clientes opinan sobre nuestras deliciosas hamburguesas y comparte tu propia experiencia.
+            Descubre lo que las personas opinan sobre las deliciosas (o no) hamburguesas y comparte tu propia experiencia.
           </p>
         </header>
 

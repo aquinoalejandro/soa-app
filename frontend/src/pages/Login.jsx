@@ -17,7 +17,7 @@ export default function Login() {
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           ¿No tienes una cuenta?{' '}
-          <a href="#" className="font-medium text-orange-600 hover:text-orange-500">
+          <a href="" className="font-medium text-orange-600 hover:text-orange-500">
             Regístrate aquí
           </a>
         </p>
