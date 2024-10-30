@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
-import { Review } from "../interface/review.interface";
-import db  from '../../../config/db';
+import { Review } from "../interfaces/review.interface";
+import db  from '../config/db';
 
 
 /*export interface Review {
