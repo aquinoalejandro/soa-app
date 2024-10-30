@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
-import { User } from "../interface/user.interface";
-import db  from '../../../config/db';
+import { User } from "../interfaces/user.interface";
+import db  from '../config/db';
 
 class UserModel extends Model<User> implements User {
     public id!: number
