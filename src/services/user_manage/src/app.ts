@@ -1,5 +1,5 @@
 import express from 'express';
-import {userRoutes} from './routes/user.routes';
+import authRoutes from './routes/auth.routes';
 import { envs } from './environments/environments';
 import { connectionDB } from './config/connectionDB';
 
@@ -8,7 +8,7 @@ const  { PORT } = envs
 const app = express();
 
 app.use(express.json());
-app.use('/api',userRoutes);
+app.use('/api',authRoutes);
 
 async function userServer() {
     await connectionDB();

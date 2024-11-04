@@ -13,5 +13,6 @@ export const envs = {
     DB_PASSWORD: env.get('DB_PASSWORD').required().asString(),
     DB_SECRET: env.get('DB_SECRET').required().asString(),
     DB_NAME: env.get('DB_NAME').required().asString(),
-    DB_DIALECT: process.env.DB_DIALECT as Dialect
+    DB_DIALECT: process.env.DB_DIALECT as Dialect,
+    SECRET_TOKEN: env.get('SECRET_TOKEN').required().asString()
 }
