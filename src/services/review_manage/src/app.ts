@@ -1,21 +1,6 @@
-import express from 'express';
-import {reviewRoutes} from './routes/review.routes';
-import { envs } from './environments/environments';
-import { connectionDB } from './config/connectionDB';
+import Server from "./server";
 
-const  { PORT } = envs
 
-const app = express();
+const sever = new Server();
 
-app.use(express.json());
-app.use('/api',reviewRoutes);
-
-async function reviewServer() {
-    await connectionDB();
-
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
-} 
-
-reviewServer();
+sever.listen();

@@ -20,7 +20,6 @@ class Server {
         this.routes();
     }
 
-    // TODO: veremos despues con el profesor otra forma
     async dbConnect(): Promise<void> {
         await connectionDB();
     }
