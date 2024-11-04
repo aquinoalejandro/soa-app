@@ -1,15 +1,7 @@
-import { Model, DataTypes } from 'sequelize';
-import { Review } from "../interface/review.interface";
-import db  from '../../../config/db';
+import { DataTypes, Model } from "../../node_modules/sequelize/types/index";
+import { Review } from "../interface/review.interface.js";
+import db from "../config/db.js";
 
-
-/*export interface Review {
-    id?: number;
-    user_id: number;
-    product_id: number;
-    comment: string;
-    rating: number;
-}*/
 class ReviewModel extends Model<Review> implements Review {
     public id!: number
     public user_id!: number
