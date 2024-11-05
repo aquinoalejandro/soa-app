@@ -1,5 +1,5 @@
 import db from "./db";
-
+import "../models/review.model";
 
 export const connectionDB = async () => {
     db.authenticate()
