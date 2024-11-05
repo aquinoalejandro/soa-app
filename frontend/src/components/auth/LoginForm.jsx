@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Mail, Lock, LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +24,66 @@ export function LoginForm({  }) {
             placeholder="tu@email.com"
           />
           <Mail className="h-5 w-5 text-gray-400 absolute left-3 top-2.5" />
+=======
+import { User, Lock, LogIn } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
+export function LoginForm() {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en el inicio de sesión');
+      }
+
+      const data = await response.json();
+      if (data) {
+        localStorage.setItem('role', data.role);
+        navigate('/Opinion');
+      } else {
+        throw new Error('Credenciales incorrectas');
+      }
+    } catch (err) {
+      setError('Error al iniciar sesión. Por favor, intente nuevamente.');
+    }
+  };
+
+  return (
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+          Nombre de usuario
+        </label>
+        <div className="mt-1 relative">
+          <input
+            id="username"
+            type="text"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="appearance-none block w-full px-3 py-2 pl-10 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+            placeholder="user1"
+          />
+          <User className="h-5 w-5 text-gray-400 absolute left-3 top-2.5" />
+>>>>>>> fabian
         </div>
       </div>
 
@@ -63,6 +124,7 @@ export function LoginForm({  }) {
         </div>
       </div>
 
+<<<<<<< HEAD
       <Link to="/Opinion">
         <button
           type="submit"
@@ -72,6 +134,17 @@ export function LoginForm({  }) {
           Iniciar Sesión
         </button>
       </Link>
+=======
+      <button
+        type="submit"
+        className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+      >
+        <LogIn className="h-4 w-4 mr-2" />
+        Iniciar Sesión
+      </button>
+
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+>>>>>>> fabian
     </form>
   );
 }

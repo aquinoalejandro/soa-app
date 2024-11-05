@@ -1,9 +1,9 @@
 import express, { Application} from "express";
-import cors from "cors";
 import morgan from "morgan";
 import helmet from 'helmet';
 import { connectionDB } from '../src/config/connectionDB';
 import { envs } from './environments/environments';
+import { reviewRoutes } from './routes/review.routes'
 
 
 class Server {
@@ -26,13 +26,14 @@ class Server {
 
 
     middlewares(): void {
-        this.app.use(cors());
         this.app.use(helmet());
         this.app.use(morgan('dev'));
         this.app.use(express.json());
     }
 
-    routes(): void {}
+    routes(): void {
+        this.app.use("/api", reviewRoutes);
+    }
 
     listen(): void {
         this.app.listen( this.port, ()=> {

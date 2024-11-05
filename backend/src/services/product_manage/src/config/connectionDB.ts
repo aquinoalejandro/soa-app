@@ -1,4 +1,5 @@
 import db from "./db";
+import "../models/product.model";
 
 
 export const connectionDB = async () => {
@@ -6,7 +7,7 @@ export const connectionDB = async () => {
         .then(() => {
             console.log('Conectado a la base de datos de postgress')
 
-            db.sync({ alter: true })
+            db.sync({ force: true })
                 .then( async () => {
                     console.log('Base de datos sincronizada');
                 })

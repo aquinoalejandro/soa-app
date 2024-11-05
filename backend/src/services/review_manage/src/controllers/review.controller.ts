@@ -12,11 +12,9 @@ import { ReviewModel } from '../models/review.model';
 
 export class ReviewController {
     async createReview(req: any, res: any) {
-        const { user_id, product_id, comment, rating } = req.body; 
+        const {  comment, rating } = req.body; 
 
         const review = {
-            user_id,
-            product_id,
             comment,
             rating
         }        
@@ -27,11 +25,9 @@ export class ReviewController {
     async updateReview(req: any, res: any) {
         const { id } = req.params;
 
-        const { user_id, product_id, comment, rating } = req.body;
+        const {  comment, rating } = req.body;
 
         const review = {
-            user_id,
-            product_id,
             comment,
             rating
         }

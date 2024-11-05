@@ -1,5 +1,5 @@
 import db from "./db";
-
+import "../models/user.model";
 
 export const connectionDB = async () => {
     db.authenticate()

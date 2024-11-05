@@ -40,6 +40,7 @@ function Opinion() {
   const [filterBy, setFilterBy] = useState('product');
   const [showLogin, setShowLogin] = useState(false);
 
+<<<<<<< HEAD
   const handleSubmitReview = (newReview) => {
     const review = {
       id: reviews.length + 1,
@@ -55,6 +56,8 @@ function Opinion() {
     setReviews([review, ...reviews]);
   };
 
+=======
+>>>>>>> fabian
   const filteredReviews = reviews.filter(review => {
     const searchLower = searchTerm.toLowerCase();
     if (filterBy === 'product') {
@@ -64,6 +67,11 @@ function Opinion() {
     }
   });
 
+<<<<<<< HEAD
+=======
+  
+
+>>>>>>> fabian
   return (
     <div className="min-h-screen bg-orange-50">
       <nav className="bg-white shadow-sm">
@@ -74,12 +82,15 @@ function Opinion() {
             </div>
             <div className="hidden sm:flex space-x-8">
               <a href="/" className="text-gray-900 hover:text-orange-600 px-3 py-2 font-medium">Inicio</a>
+<<<<<<< HEAD
               <button
                 onClick={() => setShowLogin(true)}
                 className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
               >
                 Iniciar Sesión
               </button>
+=======
+>>>>>>> fabian
             </div>
           </div>
         </div>
@@ -134,7 +145,11 @@ function Opinion() {
           </div>
 
           <div className="lg:sticky lg:top-8 h-fit">
+<<<<<<< HEAD
             <ReviewForm onSubmit={handleSubmitReview} burgerMenu={burgerMenu} />
+=======
+            <ReviewForm  burgerMenu={burgerMenu} />
+>>>>>>> fabian
           </div>
         </div>
       </div>

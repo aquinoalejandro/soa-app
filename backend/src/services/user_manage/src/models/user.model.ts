@@ -31,7 +31,7 @@ UserModel.init({
     },
     role: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         defaultValue: 'user'
     }
 }, { sequelize: db, tableName: 'users' });
