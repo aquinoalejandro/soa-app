@@ -15,19 +15,40 @@ function Opinion() {
   const [reviews, setReviews] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('product');
-  const [showLogin, setShowLogin] = useState(false);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Realiza la solicitud para obtener las opiniones
-    fetch('/api/reviews')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Error al obtener las opiniones");
-        }
-        return response.json();
-      })
-      .then(data => setReviews(data))
-      .catch(error => console.error("Error fetching reviews:", error));
+    // Llama al servicio de productos y reseñas
+    const fetchProductsAndReviews = async () => {
+      try {
+        // Obtener todos los productos
+        const productResponse = await fetch('http://localhost/api/products');
+        const productsData = await productResponse.json();
+
+        // Obtener todas las reseñas
+        const reviewsResponse = await fetch('http://localhost/api/reviews');
+        const reviewsData = await reviewsResponse.json();
+
+        // Relaciona las reseñas con sus productos
+        const combinedReviews = reviewsData.map(review => {
+          const product = productsData.find(prod => prod.id === review.product_id);
+          return {
+            ...review,
+            productName: product ? product.name : 'Producto desconocido',
+            productPrice: product ? product.price : 'N/A',
+            productDescription: product ? product.description : 'N/A'
+          };
+        });
+
+        // Guarda las reseñas y los productos en el estado
+        setReviews(combinedReviews);
+        setProducts(productsData);
+      } catch (error) {
+        console.error("Error al obtener productos o reseñas:", error);
+      }
+    };
+
+    fetchProductsAndReviews();
   }, []);
 
   const filteredReviews = reviews.filter(review => {
@@ -35,7 +56,7 @@ function Opinion() {
     if (filterBy === 'product') {
       return review.productName.toLowerCase().includes(searchLower);
     } else {
-      return review.clientName.toLowerCase().includes(searchLower);
+      return review.clientName?.toLowerCase().includes(searchLower);
     }
   });
 

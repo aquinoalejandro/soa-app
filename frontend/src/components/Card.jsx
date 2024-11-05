@@ -15,11 +15,17 @@ export const ReviewCard = ({ review }) => {
             <Utensils className="w-5 h-5 text-gray-500" />
             <span className="text-gray-600">{review.productName}</span>
           </div>
+          <div className="text-gray-500 mb-3">
+            Precio: <span className="font-medium text-gray-800">${review.productPrice}</span>
+          </div>
+          <div className="text-gray-500 mb-3">
+            Descripcion: <span className=" text-gray-600">{review.productDescription}</span>
+          </div>
         </div>
         <StarRating rating={review.rating} />
       </div>
       
-      <p className="text-gray-600 mt-3 mb-4">{review.comment}</p>
+      <p className="text-gray-600 mt-3 mb-4">Opinion: {review.comment}</p>
       
       <div className="flex items-center gap-2 text-sm text-gray-500 mt-4 pt-4 border-t">
         <Calendar className="w-4 h-4" />

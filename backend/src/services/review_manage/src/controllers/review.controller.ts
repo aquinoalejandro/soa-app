@@ -4,8 +4,8 @@ import { ReviewModel } from '../models/review.model';
 export class ReviewController {
     async createReview(req: Request, res: Response) {
         try {
-            const { comment, rating } = req.body;
-            const review = { comment, rating };
+            const { comment, rating, product_id } = req.body; 
+            const review = { comment, rating, product_id };
             const newReview = await ReviewModel.create(review);
             res.status(201).json(newReview);
         } catch (error) {

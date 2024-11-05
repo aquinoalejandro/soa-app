@@ -11,10 +11,12 @@ import db  from '../config/db';
     rating: number;
 }*/
 class ReviewModel extends Model<Review> implements Review {
-    public id!: number
-    public comment!: string
-    public rating!: number
+    public id!: number;
+    public product_id!: number; // Asegúrate de que esto esté aquí
+    public comment!: string;
+    public rating!: number;
 }
+
 
 ReviewModel.init({
     id: {
@@ -27,7 +29,12 @@ ReviewModel.init({
     },
     rating: {
         type: DataTypes.INTEGER
+    },
+    product_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
 }, { sequelize: db, tableName: 'reviews' });
 
-export { ReviewModel }
+
+export { ReviewModel };

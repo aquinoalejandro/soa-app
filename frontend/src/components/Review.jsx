@@ -45,6 +45,7 @@ export const ReviewForm = () => {
         body: JSON.stringify({
           comment: comment,
           rating: rating,
+          product_id: createdProduct.id
         }),
       });
 
