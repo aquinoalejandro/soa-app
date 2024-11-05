@@ -38,7 +38,7 @@ services:
     networks:
       - my-red
 
-
+  # product manage localhost:3002
   server2:
     depends_on:
       - postgres
@@ -58,6 +58,7 @@ services:
     networks:
       - my-red
 
+  # review localhost:3003
   server3:
     depends_on:
       - postgres
@@ -77,6 +78,7 @@ services:
     networks:
       - my-red
 
+  # user localhost:3004
   server4:
     depends_on:
       - postgres
@@ -95,6 +97,7 @@ services:
       - .env
     networks:
       - my-red
+  
 
 networks:
   my-red:

@@ -5,7 +5,6 @@ import db  from '../config/db';
 class ProductModel extends Model<Product> implements Product {
     public id!: number
     public name!: string
-    public category!: string
     public price!: number
     public description!: string
 }
@@ -17,9 +16,6 @@ ProductModel.init({
         primaryKey: true
     },
     name: {
-        type: DataTypes.STRING
-    },
-    category: {
         type: DataTypes.STRING
     },
     price: {

@@ -32,7 +32,7 @@ export function RegisterForm() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/auth/register', {
+      const response = await fetch('http://localhost/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,9 +49,8 @@ export function RegisterForm() {
       }
 
       const data = await response.json();
-      localStorage.setItem('token', data.token);
       localStorage.setItem('role', data.role);
-      navigate('/');
+      navigate('/Opinion');
     } catch (err) {
       setError('Error al registrar usuario. Por favor, intente nuevamente.');
     }

@@ -1,13 +1,13 @@
 
 import { ProductModel } from '../models/product.model';
+import { Request, Response } from "express";
 
 export class ProductController {
-    async createProduct(req: any, res: any) {
-        const { name, category, price, description } = req.body;
+    async createProduct(req: Request, res: Response) {
+        const { name, price, description } = req.body;
 
         const product = {
             name,
-            category,
             price,
             description
         }        
@@ -15,14 +15,13 @@ export class ProductController {
         await ProductModel.create(product);
     }
 
-    async updateProduct(req: any, res: any) {
+    async updateProduct(req: Request, res: Response) {
         const { id } = req.params;
 
-        const { name, category, price, description } = req.body;
+        const { name, price, description } = req.body;
 
         const product = {
             name,
-            category,
             price,
             description
         }
@@ -30,13 +29,13 @@ export class ProductController {
         await ProductModel.update(product, { where: { id } })
     }
 
-    async deleteProduct(req: any, res: any) {
+    async deleteProduct(req: Request, res: Response) {
         const { id } = req.params;
 
         await ProductModel.destroy({ where: { id } })
     }
 
-    async getProducts(req: any, res: any) {
+    async getProducts(req: Request, res: Response) {
         const products = await ProductModel.findAll();
         
         res.json(products);
