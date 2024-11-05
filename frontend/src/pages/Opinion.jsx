@@ -1,30 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ReviewCard } from '../components/Card';
 import { ReviewForm } from '../components/Review';
-import { MessageSquare, Search, Menu } from 'lucide-react';
-
-const initialReviews = [
-  {
-    id: 1,
-    clientId: 1,
-    productId: 101,
-    comment: "¡La mejor hamburguesa que he probado son de MalditaBurger! La carne estaba perfectamente cocida y los ingredientes super frescos. El pan brioche era increíble. El lomito y la pizza mortales, muy ricos.",
-    rating: 5,
-    clientName: "Ana García",
-    productName: "Hamburguesa Clasica",
-    date: "2024-03-15"
-  },
-  {
-    id: 1,
-    clientId: 1,
-    productId: 101,
-    comment: "Il Viale!!!!!!!, horrible, viene sin papa, pedís alito y te traen lomito. Ademas, las papas que pedí aparte ni llegaron",
-    rating: 0,
-    clientName: "Fabian García",
-    productName: "Alito",
-    date: "2024-03-15"
-  }
-];
+import { MessageSquare, Search } from 'lucide-react';
 
 const burgerMenu = {
   101: "Hamburguesa Clásica",
@@ -35,29 +12,24 @@ const burgerMenu = {
 };
 
 function Opinion() {
-  const [reviews, setReviews] = useState(initialReviews);
+  const [reviews, setReviews] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('product');
   const [showLogin, setShowLogin] = useState(false);
 
-<<<<<<< HEAD
-  const handleSubmitReview = (newReview) => {
-    const review = {
-      id: reviews.length + 1,
-      clientId: Math.floor(Math.random() * 1000) + 1,
-      productId: newReview.productId,
-      comment: newReview.comment,
-      rating: newReview.rating,
-      clientName: "Usuario Anónimo",
-      productName: burgerMenu[newReview.productId] || `Hamburguesa #${newReview.productId}`,
-      date: new Date().toISOString().split('T')[0]
-    };
+  useEffect(() => {
+    // Realiza la solicitud para obtener las opiniones
+    fetch('/api/reviews')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error al obtener las opiniones");
+        }
+        return response.json();
+      })
+      .then(data => setReviews(data))
+      .catch(error => console.error("Error fetching reviews:", error));
+  }, []);
 
-    setReviews([review, ...reviews]);
-  };
-
-=======
->>>>>>> fabian
   const filteredReviews = reviews.filter(review => {
     const searchLower = searchTerm.toLowerCase();
     if (filterBy === 'product') {
@@ -67,11 +39,6 @@ function Opinion() {
     }
   });
 
-<<<<<<< HEAD
-=======
-  
-
->>>>>>> fabian
   return (
     <div className="min-h-screen bg-orange-50">
       <nav className="bg-white shadow-sm">
@@ -82,15 +49,6 @@ function Opinion() {
             </div>
             <div className="hidden sm:flex space-x-8">
               <a href="/" className="text-gray-900 hover:text-orange-600 px-3 py-2 font-medium">Inicio</a>
-<<<<<<< HEAD
-              <button
-                onClick={() => setShowLogin(true)}
-                className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
-              >
-                Iniciar Sesión
-              </button>
-=======
->>>>>>> fabian
             </div>
           </div>
         </div>
@@ -145,11 +103,7 @@ function Opinion() {
           </div>
 
           <div className="lg:sticky lg:top-8 h-fit">
-<<<<<<< HEAD
-            <ReviewForm onSubmit={handleSubmitReview} burgerMenu={burgerMenu} />
-=======
-            <ReviewForm  burgerMenu={burgerMenu} />
->>>>>>> fabian
+            <ReviewForm burgerMenu={burgerMenu} />
           </div>
         </div>
       </div>

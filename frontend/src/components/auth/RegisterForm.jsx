@@ -32,11 +32,7 @@ export function RegisterForm() {
     }
 
     try {
-<<<<<<< HEAD
-      const response = await fetch('http://localhost:3000/auth/register', {
-=======
       const response = await fetch('http://localhost/api/register', {
->>>>>>> fabian
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,14 +49,8 @@ export function RegisterForm() {
       }
 
       const data = await response.json();
-<<<<<<< HEAD
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('role', data.role);
-      navigate('/');
-=======
       localStorage.setItem('role', data.role);
       navigate('/Opinion');
->>>>>>> fabian
     } catch (err) {
       setError('Error al registrar usuario. Por favor, intente nuevamente.');
     }

@@ -1,50 +1,46 @@
-
+import { Request, Response } from 'express';
 import { ReviewModel } from '../models/review.model';
 
-/*export interface Review {
-    id?: number;
-    user_id: number;
-    product_id: number;
-    comment: string;
-    rating: number;
-}*/
-
-
 export class ReviewController {
-    async createReview(req: any, res: any) {
-        const {  comment, rating } = req.body; 
-
-        const review = {
-            comment,
-            rating
-        }        
-
-        await ReviewModel.create(review);
-    }
-
-    async updateReview(req: any, res: any) {
-        const { id } = req.params;
-
-        const {  comment, rating } = req.body;
-
-        const review = {
-            comment,
-            rating
+    async createReview(req: Request, res: Response) {
+        try {
+            const { comment, rating } = req.body;
+            const review = { comment, rating };
+            const newReview = await ReviewModel.create(review);
+            res.status(201).json(newReview);
+        } catch (error) {
+            res.status(500).json({ error: 'Error creating review' });
         }
-
-        await ReviewModel.update(review, { where: { id } })
     }
 
-    async deleteReview(req: any, res: any) {
-        const { id } = req.params;
-
-        await ReviewModel.destroy({ where: { id } })
+    async updateReview(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            const { comment, rating } = req.body;
+            await ReviewModel.update({ comment, rating }, { where: { id } });
+            res.status(200).json({ message: 'Review updated successfully' });
+        } catch (error) {
+            res.status(500).json({ error: 'Error updating review' });
+        }
     }
 
-    async getReviews(req: any, res: any) {
-        const reviews = await ReviewModel.findAll();
-        
-        res.json(reviews);
+    async deleteReview(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            await ReviewModel.destroy({ where: { id } });
+            res.status(200).json({ message: 'Review deleted successfully' });
+        } catch (error) {
+            res.status(500).json({ error: 'Error deleting review' });
+        }
+    }
+
+    async getReviews(req: Request, res: Response) {
+        try {
+            const reviews = await ReviewModel.findAll();
+            res.json(reviews);
+        } catch (error) {
+            res.status(500).json({ error: 'Error fetching reviews' });
+        }
     }
 }
 

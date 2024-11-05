@@ -1,12 +1,10 @@
-import { Router } from "express";
-
-import { ProductController } from "../controllers/product.controller";
+import { Router } from 'express';
+import { ProductController } from '../controllers/product.controller';
 
 const productController = new ProductController();
+export const productRoutes = Router();
 
-export const productRoutes = Router()
-productRoutes.get('/products/', productController.getProducts);
-productRoutes.post('/product/', productController.createProduct);
-productRoutes.put('/product/:id', productController.updateProduct);
-productRoutes.post('/product/:id', productController.deleteProduct);
-
+productRoutes.get('/products/', (req, res) => productController.getProducts(req, res));
+productRoutes.post('/product/', (req, res) => productController.createProduct(req, res));
+productRoutes.put('/product/:id', (req, res) => productController.updateProduct(req, res));
+productRoutes.delete('/product/:id', (req, res) => productController.deleteProduct(req, res));
