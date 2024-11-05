@@ -2,7 +2,7 @@ import express, { Application} from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from 'helmet';
-import { connectionDB } from './config/connectionDB';
+import { connectionDB } from '../src/config/connectionDB';
 import { envs } from './environments/environments';
 
 
@@ -20,7 +20,6 @@ class Server {
         this.routes();
     }
 
-    // TODO: veremos despues con el profesor otra forma
     async dbConnect(): Promise<void> {
         await connectionDB();
     }

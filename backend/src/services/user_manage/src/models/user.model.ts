@@ -4,10 +4,10 @@ import db  from '../config/db';
 
 class UserModel extends Model<User> implements User {
     public id!: number
-    public name!: string
     public username!: string;
     public email!: string;
     public password!: string;
+    public role!: string;
 }
 
 UserModel.init({
@@ -15,9 +15,6 @@ UserModel.init({
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-    },
-    name: {
-        type: DataTypes.STRING
     },
     username: {
         type: DataTypes.STRING,
@@ -31,6 +28,11 @@ UserModel.init({
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'user'
     }
 }, { sequelize: db, tableName: 'users' });
 

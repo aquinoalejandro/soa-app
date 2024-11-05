@@ -2,8 +2,11 @@ import express, { Application} from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from 'helmet';
-import { connectionDB } from './config/connectionDB';
+import { connectionDB } from '../src/config/connectionDB';
 import { envs } from './environments/environments';
+
+
+
 
 
 class Server {

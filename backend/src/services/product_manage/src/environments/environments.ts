@@ -1,17 +1,15 @@
-
-import "dotenv/config";
-import * as env from "env-var";
-import { Dialect } from 'sequelize';
+import 'dotenv/config'
+import { Environments } from '../interface/interface.config';
 
 
 
-export const envs = {
-    PORT: env.get('PORT').required().asPortNumber(),
-    DB_HOST: env.get('DB_HOST').required().asString(),
-    DB_PORT: env.get('DB_PORT').required().asPortNumber(),
-    DB_USER: env.get('DB_USER').required().asString(),
-    DB_PASSWORD: env.get('DB_PASSWORD').required().asString(),
-    DB_SECRET: env.get('DB_SECRET').required().asString(),
-    DB_NAME: env.get('DB_NAME').required().asString(),
-    DB_DIALECT: process.env.DB_DIALECT as Dialect
+export const envs: Environments<string | undefined> = {
+    PORT: process.env.PORT,
+    DB_HOST: process.env.DB_HOST,
+    DB_PORT: process.env.DB_PORT,
+    DB_USER: process.env.DB_USER,
+    DB_PASSWORD: process.env.DB_PASSWORD,
+    DB_SECRET: process.env.DB_SECRET,
+    DB_NAME: process.env.DB_NAME,
+    DB_DIALECT: process.env.DB_DIALECT
 }

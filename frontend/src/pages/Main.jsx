@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, Star, MessageSquare, ArrowRight } from 'lucide-react';
 import Login from '../pages/Login';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -15,12 +16,12 @@ function App() {
             </div>
             <div className="hidden sm:flex space-x-8">
               <a href="/" className="text-gray-900 hover:text-orange-600 px-3 py-2 font-medium">Inicio</a>
-              <button
-                onClick={() => setShowLogin(true)}
+              <Link
+                to="/login"
                 className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition-colors"
               >
-                Iniciar Sesion
-              </button>
+                Iniciar Sesión
+              </Link>
             </div>
           </div>
         </div>
@@ -121,7 +122,6 @@ function App() {
                   <h4 className="text-lg font-bold mb-4">Enlaces</h4>
                   <ul className="space-y-2">
                     <li><a href="#" className="text-gray-400 hover:text-white">Inicio</a></li>
-                    <li><a href="#" className="text-gray-400 hover:text-white">Menú</a></li>
                     <li><a href="#" className="text-gray-400 hover:text-white">Opiniones</a></li>
                     <li><a href="#" className="text-gray-400 hover:text-white">Contacto</a></li>
                   </ul>

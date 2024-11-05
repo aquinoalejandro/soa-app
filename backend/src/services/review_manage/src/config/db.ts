@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Dialect, Sequelize } from "sequelize";
 import { envs } from "../environments/environments";
 
 
@@ -11,11 +11,15 @@ const {
     DB_PORT
 } = envs;
 
-const db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-    host: DB_HOST,
-    port: DB_PORT,
-    dialect: DB_DIALECT,
-});
 
+const db = new Sequelize(
+    DB_NAME as string, 
+    DB_USER as string, 
+    DB_PASSWORD as string, 
+    {
+    host: DB_HOST,
+    port: DB_PORT ? Number(DB_PORT) : undefined,
+    dialect: DB_DIALECT as Dialect,
+});
 
 export default db;
