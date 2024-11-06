@@ -56,7 +56,7 @@ function Opinion() {
     if (filterBy === 'product') {
       return review.productName.toLowerCase().includes(searchLower);
     } else {
-      return review.clientName?.toLowerCase().includes(searchLower);
+      return review.author?.toLowerCase().includes(searchLower);
     }
   });
 

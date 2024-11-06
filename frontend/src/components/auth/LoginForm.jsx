@@ -31,6 +31,7 @@ export function LoginForm() {
       const data = await response.json();
       if (data) {
         localStorage.setItem('role', data.role);
+        localStorage.setItem('username', formData.username);
         navigate('/Opinion');
       } else {
         throw new Error('Credenciales incorrectas');

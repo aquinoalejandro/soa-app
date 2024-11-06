@@ -15,6 +15,7 @@ class ReviewModel extends Model<Review> implements Review {
     public product_id!: number; // Asegúrate de que esto esté aquí
     public comment!: string;
     public rating!: number;
+    public author!: string;
 }
 
 
@@ -23,6 +24,9 @@ ReviewModel.init({
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
+    },
+    author: {
+        type: DataTypes.STRING
     },
     comment: {
         type: DataTypes.STRING

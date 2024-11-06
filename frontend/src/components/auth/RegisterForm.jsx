@@ -50,6 +50,7 @@ export function RegisterForm() {
 
       const data = await response.json();
       localStorage.setItem('role', data.role);
+      localStorage.setItem('username', formData.username);
       navigate('/Opinion');
     } catch (err) {
       setError('Error al registrar usuario. Por favor, intente nuevamente.');

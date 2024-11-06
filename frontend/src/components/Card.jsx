@@ -9,7 +9,7 @@ export const ReviewCard = ({ review }) => {
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2">
             <User className="w-5 h-5 text-gray-500" />
-            <span className="font-medium text-gray-700">{review.clientName}</span>
+            <span className="font-medium text-gray-700">{review.author}</span>
           </div>
           <div className="flex items-center gap-2 mb-3">
             <Utensils className="w-5 h-5 text-gray-500" />

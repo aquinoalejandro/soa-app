@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const ReviewForm = () => {
@@ -9,7 +9,24 @@ export const ReviewForm = () => {
   const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
+  const [usuario, setUsuario] = useState('');
 
+
+  const getUser = async () => {
+    try {
+      const localStorageUser = localStorage.getItem('username');
+      if (localStorageUser) {
+        setUsuario(localStorageUser);
+        console.log(usuario);
+      }
+    } catch (error) {
+      setUsuario('Usuario Anonimo');
+    }
+  }
+
+  useEffect(() => {
+    getUser();
+  })
   const handleSubmitReview = async (e) => {
     e.preventDefault();
     setError('');
@@ -45,7 +62,8 @@ export const ReviewForm = () => {
         body: JSON.stringify({
           comment: comment,
           rating: rating,
-          product_id: createdProduct.id
+          product_id: createdProduct.id,
+          author: usuario
         }),
       });
 
